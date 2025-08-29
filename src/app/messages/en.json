@@ -1,0 +1,56 @@
+{
+  "Navbar": {
+    "intro": "Revive the Fire",
+    "mission": "Mission",
+    "about": "About Us",
+    "contact": "Contact",
+    "photos": "Photos",
+    "donate": "Donate",
+    "beliefs": "Beliefs"
+  },
+  "HomePage": {
+    "heroTitle": "Revive the Fire Ministries",
+    "heroSubtitle": "Fanning the flame of revival across the nations.",
+    "heroButton": "Learn More",
+    "introTitle": "Revive the Fire Ministries",
+    "introText": "Revive the Fire is a call to fan the flame of revival ignited in the early church in the book of Acts and carried through generations. Our passion is to see souls saved and set free, the sick healed, disciples equipped, and revival break out across the nations.",
+    "missionTitle": "Our Mission",
+    "missionText": "Our Mission is to help fulfill the Great Commission through gospel campaigns, outreaches, and partnerships with local churches. We are committed to reaching the unreached with the gospel, challenging believers in areas of discipleship, and emphasizing the vital role of the local church.",
+    "aboutTitle": "About Kirk David Vigen",
+    "aboutText": "Kirk David Vigen is a missionary evangelist with a heart for revival and the nations. He grew up in Colorado Springs, Colorado, and at the age of 15, experienced a life-changing encounter with the Lord at a youth camp. Over the following years, he answered the call to preach the gospel. In his early 20s, Kirk lived in Costa Rica, where he attended language school and served as a missionary in a local community. A couple years later, he met his wife, Vania, who is from Mexico. Together, they have led evangelistic ministries in Arizona and Colorado, and today they continue their calling from Texas, where they live with their son, Elijah.",
+    "contactTitle": "Contact Us",
+    "photosTitle": "Photos",
+    "donateTitle": "Support the Mission",
+    "donateText": "Your generosity helps us fulfill the Great Commission and bring the flame of revival to the nations. Every contribution makes a difference.",
+    "donateButton": "Donate Now",
+    "beliefsTitle": "What We Believe"
+  },
+  "Beliefs": {
+    "godTitle": "God",
+    "godText": "There is one God, eternally existent in three persons: God the Father, God the Son, and God the Holy Spirit.(Deuteronomy 6:4; Matthew 28:19)",
+    "jesusTitle": "Jesus Christ",
+    "jesusText": "In the deity of our Lord Jesus Christ, in His virgin birth, in His sinless life, in His miracles, in His vicarious and atoning death, in His bodily resurrection, in His ascension to the right hand of the Father, in His personal future return to this earth in power and glory.(John 3:16; Acts 1:9-11; Romans 1:3-6)",
+    "spiritTitle": "Holy Spirit",
+    "spiritText": "Regeneration by the Holy Spirit is absolutely essential for personal salvation.(Titus 3:5)",
+    "repentanceTitle": "Repentance",
+    "repentanceText": "The only means of being cleansed from sin is through repentance and faith in the precious blood of Christ.(John 14:6)",
+    "raptureTitle": "The Rapture",
+    "raptureText": "In the blessed hope – the rapture of the Church at Christ’s coming.(Titus 2:13)",
+    "eternityTitle": "Eternity",
+    "eternityText": "In the resurrection of both the saved and the lost, the one to everlasting life and the other to everlasting damnation.(Revelation 20:11-15)",
+    "healingTitle": "Healing",
+    "healingText": "The redemptive work of Christ on the cross provides healing of the human body in answer to believing prayer.(1 Peter 2:24)",
+    "baptismTitle": "Baptism",
+    "baptismText": "In water baptism by immersion.(Matthew 28:19)",
+    "spiritBaptismTitle": "Baptism in the Holy Spirit",
+    "spiritBaptismText": "The baptism in the Holy Spirit, according to Acts 2:4, is given to believers who ask for it.",
+    "bibleTitle": "The Bible",
+    "bibleText": "The Bible is the inspired and only infallible and authoritative written Word of God. (2 Timothy 3:16)",
+    "holinessTitle": "Holiness",
+    "holinessText": "In the sanctifying power of the Holy Spirit by whose indwelling the Christian is enabled to live a holy life.(Galatians 5:16-25)"
+  },
+  "Footer": {
+    "contactInfo": "Contact Information",
+    "copyright": "All rights reserved."
+  }
+}
