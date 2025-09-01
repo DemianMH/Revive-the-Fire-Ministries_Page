@@ -56,7 +56,7 @@ return (
             <p className="text-lg text-slate-600 leading-relaxed">{t('HomePage.aboutText')}</p>
         </div>
         <div className="flex justify-center">
-            <Image src="/image-gallery-9.jpeg" alt="Kirk David Vigen" width={300} height={300} className="rounded-full shadow-2xl" />
+            <Image src="/image-gallery-9.png" alt="Kirk David Vigen" width={300} height={300}  />
         </div>
         </div>
     </AnimatedSection>
