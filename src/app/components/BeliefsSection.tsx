@@ -1,37 +1,85 @@
-// Ubicación: src/app/components/BeliefsSection.tsx
+// src/app/components/BeliefsSection.tsx
 "use client";
 
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaCross, FaBible, FaDove, FaHandHoldingHeart, FaBookOpen, FaChurch, FaHandsHelping, FaWater, FaFire, FaPrayingHands, FaHeart } from 'react-icons/fa';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Definimos un tipo específico para el objeto 'belief'
+interface Belief {
+title: string;
+text: string;
+}
+
+const AccordionItem = ({ belief, isOpen, onToggle }: { belief: Belief, isOpen: boolean, onToggle: () => void }) => {
+return (
+    <div className="border-b border-gray-200">
+    <button
+        onClick={onToggle}
+        className="flex justify-between items-center w-full py-6 text-left"
+    >
+        <h3 className="text-lg font-semibold uppercase tracking-wider text-slate-800">{belief.title}</h3>
+        <div className="text-xl text-slate-500">
+        {isOpen ? <FaMinus /> : <FaPlus />}
+        </div>
+    </button>
+    <AnimatePresence>
+        {isOpen && (
+        <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+        >
+            <p className="pb-6 pr-8 text-slate-600 leading-relaxed">
+            {belief.text}
+            </p>
+        </motion.div>
+        )}
+    </AnimatePresence>
+    </div>
+);
+};
 
 const BeliefsSection = () => {
 const { t } = useTranslation();
+const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-const beliefs = [
-    { icon: <FaCross />, title: t('Beliefs.godTitle'), text: t('Beliefs.godText') },
-    { icon: <FaHeart />, title: t('Beliefs.jesusTitle'), text: t('Beliefs.jesusText') },
-    { icon: <FaDove />, title: t('Beliefs.spiritTitle'), text: t('Beliefs.spiritText') },
-    { icon: <FaPrayingHands />, title: t('Beliefs.repentanceTitle'), text: t('Beliefs.repentanceText') },
-    { icon: <FaChurch />, title: t('Beliefs.raptureTitle'), text: t('Beliefs.raptureText') },
-    { icon: <FaBookOpen />, title: t('Beliefs.eternityTitle'), text: t('Beliefs.eternityText') },
-    { icon: <FaHandHoldingHeart />, title: t('Beliefs.healingTitle'), text: t('Beliefs.healingText') },
-    { icon: <FaWater />, title: t('Beliefs.baptismTitle'), text: t('Beliefs.baptismText') },
-    { icon: <FaFire />, title: t('Beliefs.spiritBaptismTitle'), text: t('Beliefs.spiritBaptismText') },
-    { icon: <FaBible />, title: t('Beliefs.bibleTitle'), text: t('Beliefs.bibleText') },
-    { icon: <FaHandsHelping />, title: t('Beliefs.holinessTitle'), text: t('Beliefs.holinessText') }
+const handleToggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+};
+
+const beliefs: Belief[] = [
+    { title: t('Beliefs.godTitle'), text: t('Beliefs.godText') },
+    { title: t('Beliefs.jesusTitle'), text: t('Beliefs.jesusText') },
+    { title: t('Beliefs.spiritTitle'), text: t('Beliefs.spiritText') },
+    { title: t('Beliefs.repentanceTitle'), text: t('Beliefs.repentanceText') },
+    { title: t('Beliefs.raptureTitle'), text: t('Beliefs.raptureText') },
+    { title: t('Beliefs.eternityTitle'), text: t('Beliefs.eternityText') },
+    { title: t('Beliefs.healingTitle'), text: t('Beliefs.healingText') },
+    { title: t('Beliefs.baptismTitle'), text: t('Beliefs.baptismText') },
+    { title: t('Beliefs.spiritBaptismTitle'), text: t('Beliefs.spiritBaptismText') },
+    { title: t('Beliefs.bibleTitle'), text: t('Beliefs.bibleText') },
+    { title: t('Beliefs.holinessTitle'), text: t('Beliefs.holinessText') }
 ];
 
 return (
     <section id="beliefs" className="bg-white py-20 md:py-28 px-6 lg:px-8">
-    <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">{t('HomePage.beliefsTitle')}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16 text-center">
+        {t('HomePage.beliefsTitle')}
+        </h2>
+        
+        <div className="w-full">
         {beliefs.map((belief, index) => (
-            <div key={index} className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-blue-600 text-4xl mb-4">{belief.icon}</div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">{belief.title}</h3>
-            <p className="text-slate-600">{belief.text}</p>
-            </div>
+            <AccordionItem
+            key={index}
+            belief={belief}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+            />
         ))}
         </div>
     </div>

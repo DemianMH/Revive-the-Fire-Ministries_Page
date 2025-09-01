@@ -1,4 +1,4 @@
-// Ubicación: src/app/components/AnimatedSection.tsx
+// src/app/components/AnimatedSection.tsx
 "use client";
 
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ return (
     <motion.section
     id={id}
     className={`py-20 md:py-28 px-6 lg:px-8 ${className}`}
-    initial={{ opacity: 0, y: 50 }}
+    initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.7, ease: "easeOut" }}

@@ -1,4 +1,4 @@
-// Ubicación: src/app/components/HeroSection.tsx
+// src/app/components/HeroSection.tsx
 "use client";
 
 import Image from 'next/image';
@@ -27,8 +27,7 @@ return (
             alt="Llama de avivamiento"
             width={500}
             height={500}
-            unoptimized={true}
-            className="opacity-70"
+            className="opacity-70 rounded-full"
         />
         </div>
     </div>

@@ -1,4 +1,4 @@
-// Ubicación: src/app/components/PhotoCarousel.tsx
+// src/app/components/PhotoCarousel.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -16,7 +16,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
 useEffect(() => {
     const interval = setInterval(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Cambia de imagen cada 5 segundos
+    }, 5000); 
 
     return () => clearInterval(interval);
 }, [images.length]);
@@ -49,12 +49,10 @@ return (
             alt={images[currentIndex].alt}
             layout="fill"
             objectFit="cover"
-            priority={currentIndex === 0} // Carga la primera imagen con prioridad
+            priority={currentIndex === 0}
         />
         </motion.div>
     </AnimatePresence>
-
-      {/* Navegación manual (opcional, pero buena para UX) */}
     <button
         onClick={goToPrevious}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors duration-300 focus:outline-none z-10"
@@ -69,8 +67,6 @@ return (
     >
         <FaChevronRight />
     </button>
-
-      {/* Indicadores de diapositiva */}
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
         {images.map((_, index) => (
         <button

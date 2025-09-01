@@ -1,12 +1,13 @@
 {
   "Navbar": {
-    "intro": "Revive el Fuego",
+    "intro": "Ministerios Aviva el Fuego",
     "mission": "Misión",
     "about": "Acerca de",
-    "contact": "Contacto",
+    "contact": "Contactanos | Invitanos",
     "photos": "Fotos",
     "donate": "Donar",
-    "beliefs": "Creencias"
+    "beliefs": "Creencias",
+    "ministryName": "Revive el Fuego Ministerios"
   },
   "HomePage": {
     "heroTitle": "Ministerios Revive el Fuego",
@@ -18,12 +19,25 @@
     "missionText": "Nuestra Misión es ayudar a cumplir la Gran Comisión a través de campañas evangelísticas, alcances y alianzas con iglesias locales. Estamos comprometidos a alcanzar a los no alcanzados con el evangelio, desafiando a los creyentes en áreas de discipulado y enfatizando el papel vital de la iglesia local.",
     "aboutTitle": "Acerca de Kirk David Vigen",
     "aboutText": "Kirk David Vigen es un evangelista misionero con un corazón para el avivamiento y las naciones. Creció en Colorado Springs, Colorado, y a los 15 años, tuvo un encuentro con el Señor que cambió su vida en un campamento juvenil. En los años siguientes, respondió al llamado de predicar el evangelio. A sus 20 años, Kirk vivió en Costa Rica, donde asistió a una escuela de idiomas y sirvió como misionero en una comunidad local. Un par de años después, conoció a su esposa, Vania, quien es de México. Juntos, han liderado ministerios evangelísticos en Arizona y Colorado, y hoy continúan su llamado desde Texas, donde viven con su hijo, Elijah.",
-    "contactTitle": "Contáctanos",
+    "contactTitle": "Contáctanos | Invitanos",
     "photosTitle": "Fotos",
     "donateTitle": "Apoya la Misión",
     "donateText": "Tu generosidad nos ayuda a cumplir la Gran Comisión y llevar la llama del avivamiento a las naciones. Cada contribución hace la diferencia.",
     "donateButton": "Donar Ahora",
     "beliefsTitle": "Lo Que Creemos"
+  },
+  "ContactPage": {
+    "description": "¡Nos encantaría saber de ti! Ya sea que tengas una pregunta, necesites ayuda o quieras conectar con nuestro ministerio, simplemente completa el formulario a continuación y un miembro de nuestro equipo se pondrá en contacto contigo lo antes posible.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "sendButton": "Enviar"
+  },
+  "DonateModal": {
+    "p1": "Su generosidad nos ayuda a cumplir la Gran Comisión y a llevar la llama del avivamiento a las naciones. Cualquier contribución puede tener un impacto eterno.",
+    "p2": "Ministerios Reviva el Fuego es una organización sin fines de lucro 501(c)(3), y todas las donaciones son deducibles de impuestos hasta el máximo permitido por la ley.",
+    "heading": "Formas de donar:"
   },
   "Beliefs": {
     "godTitle": "Dios",
