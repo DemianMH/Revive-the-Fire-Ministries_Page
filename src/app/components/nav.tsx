@@ -1,7 +1,7 @@
 // src/app/components/nav.tsx
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Importamos useEffect
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
@@ -17,12 +17,21 @@ interface NavLink {
 const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Estado para controlar si el componente ya se montó en el cliente
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
 
-  const navLinks: NavLink[] = [
+  // Prevenimos que navLinks se renderice con traducciones en el servidor
+  // que podrían no coincidir con el cliente.
+  const navLinks: NavLink[] = isMounted ? [
     { href: '/#intro', label: t('Navbar.intro') },
     { href: '/#mission', label: t('Navbar.mission') },
     { href: '/#about', label: t('Navbar.about') },
@@ -30,10 +39,9 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
     { href: '/#photos', label: t('Navbar.photos') },
     { action: 'donate', label: t('Navbar.donate') },
     { href: '/#beliefs', label: t('Navbar.beliefs') }
-  ];
+  ] : [];
 
   const renderNavLink = (link: NavLink) => {
-    // Añadimos w-full para que cada enlace ocupe todo el ancho en el menú móvil
     const className = "w-full text-gray-300 hover:text-blue-400 font-medium transition-colors duration-300";
     if (link.action === 'donate') {
       return (
@@ -42,11 +50,9 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
         </button>
       );
     }
-    // Si la ruta es interna y no es un ancla, usar Link
     if (link.href && link.href.startsWith('/') && !link.href.includes('#')) {
       return <Link key={link.href} href={link.href} onClick={handleLinkClick} className={`${className} py-2`}>{link.label}</Link>;
     }
-    // Para anclas (/#...), mantenemos la etiqueta <a> para el scroll-smooth
     return <a key={link.href} href={link.href} onClick={handleLinkClick} className={`${className} py-2`}>{link.label}</a>;
   };
 
@@ -62,7 +68,10 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
             priority
           />
           <span className="text-gray-100 text-lg font-semibold whitespace-nowrap hidden sm:inline">
-            {t('Navbar.ministryName')}
+            {/* Mostramos el texto solo cuando el componente está montado para evitar el error.
+              Antes de montarse, el span estará vacío, pero no causará un gran cambio visual.
+            */}
+            {isMounted ? t('Navbar.ministryName') : ''}
           </span>
         </Link>
 
@@ -84,7 +93,6 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
       </div>
 
       {isMenuOpen && (
-        // Cambiamos a flex y flex-col para crear la lista vertical
         <div className="md:hidden flex flex-col items-center bg-slate-900/95 backdrop-blur-lg pt-4 pb-6 px-6 space-y-4 text-center border-t border-slate-700/50">
           {navLinks.map(renderNavLink)}
         </div>
