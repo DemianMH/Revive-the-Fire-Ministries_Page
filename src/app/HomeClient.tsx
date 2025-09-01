@@ -25,7 +25,6 @@ const carouselPhotos = [
     { src: "/image-gallery-2.jpg", alt: "Ministry event 2" },
     { src: "/image-gallery-3.jpg", alt: "Ministry event 3" },
     { src: "/image-gallery-4.jpeg", alt: "Ministry event 4" },
-    { src: "/image-gallery-6.jpg", alt: "Ministry event 6" },
     { src: "/image-gallery-8.jpg", alt: "Ministry event 8" },
     { src: "/image-gallery-10.jpeg", alt: "Ministry event 10" },
     { src: "/image-gallery-11.jpg", alt: "Ministry event 11" },
