@@ -1,12 +1,11 @@
 // src/app/components/BeliefsSection.tsx
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // 1. Importar useEffect
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Definimos un tipo específico para el objeto 'belief'
 interface Belief {
 title: string;
 text: string;
@@ -47,11 +46,18 @@ const BeliefsSection = () => {
 const { t } = useTranslation();
 const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  // 2. Añadir el estado isMounted
+const [isMounted, setIsMounted] = useState(false);
+useEffect(() => {
+    setIsMounted(true);
+}, []);
+
 const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
 };
 
-const beliefs: Belief[] = [
+  // 3. Crear el array de creencias solo cuando el componente está montado
+const beliefs: Belief[] = isMounted ? [
     { title: t('Beliefs.godTitle'), text: t('Beliefs.godText') },
     { title: t('Beliefs.jesusTitle'), text: t('Beliefs.jesusText') },
     { title: t('Beliefs.spiritTitle'), text: t('Beliefs.spiritText') },
@@ -63,13 +69,14 @@ const beliefs: Belief[] = [
     { title: t('Beliefs.spiritBaptismTitle'), text: t('Beliefs.spiritBaptismText') },
     { title: t('Beliefs.bibleTitle'), text: t('Beliefs.bibleText') },
     { title: t('Beliefs.holinessTitle'), text: t('Beliefs.holinessText') }
-];
+  ] : []; // Si no está montado, el array estará vacío para evitar el error
 
 return (
     <section id="beliefs" className="bg-white py-20 md:py-28 px-6 lg:px-8">
     <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16 text-center">
-        {t('HomePage.beliefsTitle')}
+          {/* 4. Aplicar la lógica al título */}
+        {isMounted ? t('HomePage.beliefsTitle') : <>&nbsp;</>}
         </h2>
         
         <div className="w-full">

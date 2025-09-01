@@ -3,9 +3,17 @@
 
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react'; // 1. Importar useState y useEffect
 
 const HeroSection = () => {
 const { t } = useTranslation();
+
+  // 2. Añadir el estado para controlar si el componente está montado
+const [isMounted, setIsMounted] = useState(false);
+
+useEffect(() => {
+    setIsMounted(true);
+}, []);
 
 return (
     <section id="home" className="relative h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
@@ -32,9 +40,16 @@ return (
         </div>
     </div>
     <div className="relative z-20 p-6">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">{t('HomePage.heroTitle')}</h1>
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 mb-8">{t('HomePage.heroSubtitle')}</p>
-        <a href="#intro" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 duration-300">{t('HomePage.heroButton')}</a>
+        {/* 3. Renderizar el texto solo cuando isMounted es true */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">
+        {isMounted ? t('HomePage.heroTitle') : <>&nbsp;</>}
+        </h1>
+        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 mb-8">
+        {isMounted ? t('HomePage.heroSubtitle') : <>&nbsp;</>}
+        </p>
+        <a href="#intro" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 duration-300">
+        {isMounted ? t('HomePage.heroButton') : <>&nbsp;</>}
+        </a>
     </div>
     </section>
 );

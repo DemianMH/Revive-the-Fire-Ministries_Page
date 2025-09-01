@@ -1,12 +1,13 @@
 // src/app/components/nav.tsx
 "use client";
 
-import { useState, useEffect } from 'react'; // Importamos useEffect
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useModal } from '../context/ModalContext'; 
 
 interface NavLink {
   href?: string;
@@ -14,11 +15,10 @@ interface NavLink {
   action?: 'donate';
 }
 
-const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
+const Navbar = () => {
   const { t } = useTranslation();
+  const { openDonateModal } = useModal(); 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Estado para controlar si el componente ya se montó en el cliente
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -29,8 +29,6 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
     setIsMenuOpen(false);
   };
 
-  // Prevenimos que navLinks se renderice con traducciones en el servidor
-  // que podrían no coincidir con el cliente.
   const navLinks: NavLink[] = isMounted ? [
     { href: '/#intro', label: t('Navbar.intro') },
     { href: '/#mission', label: t('Navbar.mission') },
@@ -45,7 +43,7 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
     const className = "w-full text-gray-300 hover:text-blue-400 font-medium transition-colors duration-300";
     if (link.action === 'donate') {
       return (
-        <button key={link.label} onClick={() => { onDonateClick(); handleLinkClick(); }} className={`${className} bg-transparent border-none cursor-pointer py-2`}>
+        <button key={link.label} onClick={() => { openDonateModal(); handleLinkClick(); }} className={`${className} bg-transparent border-none cursor-pointer py-2`}>
           {link.label}
         </button>
       );
@@ -68,13 +66,9 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
             priority
           />
           <span className="text-gray-100 text-lg font-semibold whitespace-nowrap hidden sm:inline">
-            {/* Mostramos el texto solo cuando el componente está montado para evitar el error.
-              Antes de montarse, el span estará vacío, pero no causará un gran cambio visual.
-            */}
             {isMounted ? t('Navbar.ministryName') : ''}
           </span>
         </Link>
-
         <div className="md:hidden flex items-center">
           <LanguageSwitcher />
           <button
@@ -85,13 +79,11 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
             {isMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
           </button>
         </div>
-
         <div className="hidden md:flex items-center space-x-6">
           {navLinks.map(renderNavLink)}
           <LanguageSwitcher />
         </div>
       </div>
-
       {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center bg-slate-900/95 backdrop-blur-lg pt-4 pb-6 px-6 space-y-4 text-center border-t border-slate-700/50">
           {navLinks.map(renderNavLink)}
