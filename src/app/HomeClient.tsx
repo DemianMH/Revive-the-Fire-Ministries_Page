@@ -39,8 +39,8 @@ return (
     <HeroSection />
     <AnimatedSection id="intro" className="bg-gray-50">
         <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{isMounted ? t('HomePage.introTitle') : <>&nbsp;</>}</h2>
-        <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{isMounted ? t('HomePage.introTitle2') : <>&nbsp;</>}</h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{isMounted ? t('HomePage.introTitle2') : <>&nbsp;</>}</h2>
+        <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{isMounted ? t('HomePage.introTitle') : <>&nbsp;</>}</h3>
         <p className="text-lg text-slate-600 leading-relaxed">{isMounted ? t('HomePage.introText') : <>&nbsp;</>}</p>
         </div>
     </AnimatedSection>

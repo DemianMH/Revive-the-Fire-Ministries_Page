@@ -3,9 +3,22 @@
 
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
+import { useForm, ValidationError } from '@formspree/react'; // 1. Importar hooks de Formspree
 
 export default function ContactPage() {
   const { t } = useTranslation();
+  // 2. Usar el ID oficial de tu cliente: "xdklwozo"
+  const [state, handleSubmit] = useForm("xdklwozo");
+
+  // 3. Mostrar un mensaje de éxito con el estilo de tu página
+  if (state.succeeded) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center min-h-[60vh] bg-gray-50 p-6">
+        <h2 className="text-3xl font-bold text-blue-950 mb-4">¡Gracias por tu mensaje!</h2>
+        <p className="text-slate-600 text-lg">Nos pondremos en contacto contigo pronto.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-50">
@@ -27,7 +40,8 @@ export default function ContactPage() {
               {t('ContactPage.description')}
             </p>
           </div>
-          <form action="#" method="POST" className="space-y-6">
+          {/* 4. Usar la función handleSubmit en el evento onSubmit */}
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="first-name" className="block text-sm font-semibold text-slate-700 mb-2">
@@ -66,6 +80,12 @@ export default function ContactPage() {
                 required
                 className="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4"
               />
+              <ValidationError 
+                prefix="Email" 
+                field="email"
+                errors={state.errors}
+                className="text-red-600 mt-2 text-sm"
+              />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
@@ -76,15 +96,21 @@ export default function ContactPage() {
                 id="message"
                 rows={6}
                 className="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4"
-                defaultValue={''}
+              />
+              <ValidationError 
+                prefix="Message" 
+                field="message"
+                errors={state.errors}
+                className="text-red-600 mt-2 text-sm"
               />
             </div>
             <div className="text-center pt-4">
               <button
                 type="submit"
-                className="inline-block bg-blue-900 hover:bg-blue-950 text-white font-bold py-4 px-12 rounded-full text-lg transition-transform transform hover:scale-105 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                disabled={state.submitting}
+                className="inline-block bg-blue-900 hover:bg-blue-950 text-white font-bold py-4 px-12 rounded-full text-lg transition-transform transform hover:scale-105 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:bg-slate-400 disabled:scale-100"
               >
-                {t('ContactPage.sendButton')}
+                {state.submitting ? 'Enviando...' : t('ContactPage.sendButton')}
               </button>
             </div>
           </form>
