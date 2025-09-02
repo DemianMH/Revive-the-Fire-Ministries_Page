@@ -44,6 +44,9 @@ return (
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">
         {isMounted ? t('HomePage.heroTitle') : <>&nbsp;</>}
         </h1>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">
+        {isMounted ? t('HomePage.heroTitle2') : <>&nbsp;</>}
+        </h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 mb-8">
         {isMounted ? t('HomePage.heroSubtitle') : <>&nbsp;</>}
         </p>
