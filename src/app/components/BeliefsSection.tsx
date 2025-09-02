@@ -58,6 +58,7 @@ const handleToggle = (index: number) => {
 
   // 3. Crear el array de creencias solo cuando el componente está montado
 const beliefs: Belief[] = isMounted ? [
+    { title: t('Beliefs.salvationTitle'), text: t('Beliefs.salvationText') },
     { title: t('Beliefs.godTitle'), text: t('Beliefs.godText') },
     { title: t('Beliefs.jesusTitle'), text: t('Beliefs.jesusText') },
     { title: t('Beliefs.spiritTitle'), text: t('Beliefs.spiritText') },

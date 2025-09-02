@@ -23,9 +23,8 @@ const Footer = () => {
         <h3 className="font-bold text-white uppercase tracking-wider mb-4">
           {isMounted ? t('Footer.contactInfo') : <>&nbsp;</>}
         </h3>
-        <p className="text-gray-400 mb-6">contact@revivethefire.info</p>
-        <p className="text-gray-400 mb-2">Tel: 817-975-3959</p>
-        <p className="text-gray-400 mb-2">PO Box 975, Argyle, TX 76226</p>
+        <p className="text-gray-400 mb-2">email: contact@revivethefire.info</p>
+        <p className="text-gray-400 mb-6">PO Box 975, Argyle, TX 76226</p>
         <div className="flex justify-center space-x-6 mb-8">
           <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-white"><FaInstagram size={24} /></a>
           <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-white"><FaFacebookF size={24} /></a>
